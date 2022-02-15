@@ -40,14 +40,16 @@
     };
 
         // 관례: 모든 컴포넌트는 대문자로 적어준다. 
-    const container = (
+    function Container(){
+        return(
         <div>
             <button>이건 그냥 버튼 테그를 Html로 넣은거고</button>
             <Title /> //이건 컴포넌트이다. 
             <Button />
         </div>
-    );
+        );
+    };
 
-    ReactDOM.render(container, root);
+    ReactDOM.render(<Container />, root);
 </script>
 </html>
