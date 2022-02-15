@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="root"></div>
+</body>
+
+<!--
+JSX -> html과 유사한 구조를 가지고있기 때문에 종전(돔에서 생성하는 방법) 보다 쉽게 html을 생성할 수 있다. 
+-->
+<script crossorigin src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+<!-- html코드를 jsx형태의 코드로 변경해주기위해서 babel 형태를 만들어준다. -->
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<!-- 스크립트 영역도 문구를 추가해줘야한다. -->
+<!-- jsx형태의 문법으로 html생성 -> babel로 코드를 넘겨줘서 변형  -> react가상돔에서 라이브러리로 페이지 생성 -> 브라우저에 out.   -->
+<script type="text/babel">
+    const root = document.getElementById("root"); 
+    // const h3 = React.createElement(
+    //     "h3", 
+    //     {
+    //     onMouseEnter: () => console.log("on mouse enter here")
+    //     }, 
+    //     "hello i am a span");
+    // const btn = React.createElement(
+    //     "button", {
+    //         onClick: () => console.log("i am clicked"),
+    //         style: {
+    //             backgroundColor: "tomato",
+    //         }
+    //     }, 
+    //     "click Me");
+    // const div = React.createElement("div", null )
+
+    const Title = <h3 id="title" onMouseEnter={()=> console.log("on mouse enter here")}>Hello I'am a title</h3>
+    const Button =  <button style={{
+        backgroundColor: "tomato",
+        }}
+        onClick={() => console.log("i am clicked")}
+        >click me@!@!#!#!</button>
+
+    const container = React.createElement("div", null, [Title, Button]);
+
+    ReactDOM.render(container, root);
+</script>
+</html>
