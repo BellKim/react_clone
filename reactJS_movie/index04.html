@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="root"></div>
+</body>
+<script crossorigin src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+<script type="text/babel">
+    const root = document.getElementById("root"); 
+    
+    function Title(){
+       return (
+           <h3 id="title" onMouseEnter={
+               ()=> console.log("on mouse enter here")
+               }
+            >
+                Hello I'am a title
+           </h3>
+           );
+    };
+
+    function Button(){
+        return (
+            <button style={{
+            backgroundColor: "tomato",
+            }}
+            onClick={() => console.log("i am clicked")}
+            >click me@!@!#!#!</button>
+        );
+    };
+
+        // 관례: 모든 컴포넌트는 대문자로 적어준다. 
+    const container = (
+        <div>
+            <button>이건 그냥 버튼 테그를 Html로 넣은거고</button>
+            <Title /> //이건 컴포넌트이다. 
+            <Button />
+        </div>
+    );
+
+    ReactDOM.render(container, root);
+</script>
+</html>

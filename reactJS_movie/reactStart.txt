@@ -5,3 +5,8 @@ react CDN  address
 
 https://reactjs.org/docs/cdn-links.html
 
+
+babel
+https://babeljs.io/setup.html#installation
+
+
