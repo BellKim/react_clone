@@ -17,9 +17,15 @@
 <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
 <script>
     const root = document.getElementById("root");
+        
+    const span = React.createElement("h3", {
+        onMouseEnter: () => console.log("on mouse enter here")
+    }, "hello i am a span");
+    const btn = React.createElement("button", {
+        onClick: () => console.log("i am clicked")
+    }, "click Me");
+    // const div = React.createElement("div", null )
 
-    const span = React.createElement("div", null, "hello i am a span");
-    const btn = React.createElement("button", null, "click Me");
     const container = React.createElement("div", null, [span, span, btn]);
 
     ReactDOM.render(container, root);
