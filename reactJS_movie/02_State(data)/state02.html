@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="root"></div>
+</body>
+<script crossorigin src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+<script type="text/babel">
+    const root = document.getElementById("root"); 
+    
+    function App(){        
+        // const data1 = React.useState(0);
+        // console.log(data1); //결과 : (2) [0, ƒ] 가 나오는데 각각 데이터와 데이터를 이용한 함수구현부가 있다.
+
+        const [counter, setCounter] = React.useState(3); //const가 상수로 되어있으니 잠시 let으로 변경.
+        const onClick = () => {
+            // modifier 함수가 값을 변경시키면서 렌더링까지 같이 해주는 역할을 한다. 
+            setCounter(counter +1);
+        }
+        return (
+            <div>
+                <h3 id="title">
+                    totalClicks: {counter}
+            </h3>
+            <button onClick={onClick}>
+                    click me@!@!#!#!
+                </button>
+            </div>
+        );
+    };
+
+    ReactDOM.render(<App />, root);
+
+    /*
+        const num = [1, 2, 3];
+        const [a,b,c] = x;
+        a : 1
+        b : 2
+        c : 3
+    */
+</script>
+</html>
