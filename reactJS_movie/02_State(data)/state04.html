@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="root"></div>
+</body>
+<script crossorigin src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+<script type="text/babel">
+    const root = document.getElementById("root"); 
+
+    
+    
+    function App(){        
+    
+        const [minutes, setMinutes] = React.useState();
+        const onChange = (event) => {
+            console.log(event); //event의   target 이 중요. 
+            console.log(event.target.value);// 해당 텍스트박스의 값을 읽어들여서
+            setMinutes(event.target.value); // setminutes에 담아준다. 
+        }
+        const reset = (event) => {
+            setMinutes(0);
+        }
+        return (
+
+            <div>
+                <div>
+                    <h1 className="h1"> convert Test </h1>
+                    <label htmlFor="monute"> Minutes</label>
+                    <input 
+                        value={minutes} 
+                        id="minutes" 
+                        placeholder="Minutes" 
+                        type="number" 
+                        onChange={onChange}
+                    />
+                </div>
+                <div>
+                    <label htmlFor="hours"> Hours</label>
+                    <input 
+                        value={Math.round(minutes/60)}
+                        id="hours" 
+                        placeholder="Hours" 
+                        type="number"
+                        disabled
+                    />
+                </div>
+                <button onClick={reset}> reset BTN (returnToZero) </button>
+            </div>
+        );
+    };
+
+    ReactDOM.render(<App />, root);
+
+    /*
+        const num = [1, 2, 3];
+        const [a,b,c] = x;
+        a : 1
+        b : 2
+        c : 3
+    */
+</script>
+</html>
