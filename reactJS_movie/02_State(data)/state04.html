@@ -22,15 +22,25 @@
     
     function App(){        
     
-        const [minutes, setMinutes] = React.useState();
+        const [amount, setAmount] = React.useState(0);
         const onChange = (event) => {
             console.log(event); //event의   target 이 중요. 
             console.log(event.target.value);// 해당 텍스트박스의 값을 읽어들여서
-            setMinutes(event.target.value); // setminutes에 담아준다. 
+            setAmount(event.target.value); // setAmount에 담아준다. 
         }
         const reset = (event) => {
-            setMinutes(0);
+            setAmount(0);
         }
+
+
+        const [flipped, setFlipped] = React.useState(false);
+
+        //const onFlip = () => setFlipped(!flipped); //이렇게 하면 초기값을 알수 없으니
+        const onFlip = () => {
+            reset();
+            setFlipped((current) => !current);//현재값을 현장에서 다시 받아다가 조건문을 실행하도록한다.
+        }
+
         return (
 
             <div>
@@ -38,24 +48,30 @@
                     <h1 className="h1"> convert Test </h1>
                     <label htmlFor="monute"> Minutes</label>
                     <input 
-                        value={minutes} 
+                        value={flipped ? Math.round(amount*60) :  amount} 
                         id="minutes" 
                         placeholder="Minutes" 
                         type="number" 
                         onChange={onChange}
+                        disabled={flipped}
+                        //disabled={flipped === true}
                     />
                 </div>
                 <div>
                     <label htmlFor="hours"> Hours</label>
                     <input 
-                        value={Math.round(minutes/60)}
+                        value={flipped ? amount :  Math.round(amount/60)}
                         id="hours" 
                         placeholder="Hours" 
                         type="number"
-                        disabled
+                        onChange={onChange}
+                        disabled={!flipped}
+                        // disabled={flipped === false}
                     />
                 </div>
                 <button onClick={reset}> reset BTN (returnToZero) </button>
+                <button onClick={onFlip}> FLIP </button>
+                
             </div>
         );
     };
