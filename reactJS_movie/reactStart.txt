@@ -10,3 +10,9 @@ babel
 https://babeljs.io/setup.html#installation
 
 
+var는 function-scoped이고, let, const는 block-scoped입니다.
+
+function-scoped?
+block-scoped?
+
+
