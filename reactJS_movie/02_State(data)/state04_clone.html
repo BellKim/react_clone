@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="root"></div>
+</body>
+<script crossorigin src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+<script type="text/babel">
+    const root = document.getElementById("root"); 
+
+    
+    
+    function App(){        
+        const[amount, setAmount] = React.useState(0);
+        
+        const onChange = (event) => {
+            console.log(event);
+            console.log(event.target.value);
+            setAmount(event.target.value);
+
+        }
+        const reset = (event) => {
+            setAmount(0);
+        }
+
+        const [flipped, setFlipped] = React.useState(false);
+        const onFlip = () => {
+            reset();
+            setFlipped()
+        }
+
+
+        return (
+            <div>
+                <h1> convertTest</h1>
+                <div>
+                    <label> Min </label>
+                    <input
+                    value={flipped ? Math.round(amount*60) : amount}
+                        onChange={onChange}
+                        disabled={flipped}
+                    ></input>
+                
+                </div>
+
+                <div>
+                    <label> Hours </label>
+                    <input
+                        value={flipped ? mount :  Math.round(amount/60)}
+                        disabled={!flipped}
+                    ></input>
+                
+                </div>
+                <button onclikc={reset}> resetBTN here </button>
+                <button onclick={onFlip}> flip </button>
+
+            </div>    
+
+        );
+    };
+
+    ReactDOM.render(<App />, root);
+
+
+</script>
+</html>     

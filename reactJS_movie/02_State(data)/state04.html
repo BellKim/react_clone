@@ -46,9 +46,10 @@
             <div>
                 <div>
                     <h1 className="h1"> convert Test </h1>
+
                     <label htmlFor="monute"> Minutes</label>
                     <input 
-                        value={flipped ? Math.round(amount*60) :  amount} 
+                        value={flipped ? Math.round(amount/60) :  amount} 
                         id="minutes" 
                         placeholder="Minutes" 
                         type="number" 
@@ -57,10 +58,11 @@
                         //disabled={flipped === true}
                     />
                 </div>
+                
                 <div>
                     <label htmlFor="hours"> Hours</label>
                     <input 
-                        value={flipped ? amount :  Math.round(amount/60)}
+                        value={flipped ? amount :  Math.round(amount*60)}
                         id="hours" 
                         placeholder="Hours" 
                         type="number"
@@ -86,7 +88,7 @@
         c : 3
 
 
-        
+
     */
 </script>
-</html>
+</html>     
