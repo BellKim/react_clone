@@ -36,7 +36,7 @@
         const [flipped, setFlipped] = React.useState(false);
         const onFlip = () => {
             reset();
-            setFlipped()
+            setFlipped((current) => !current);
         }
 
 
@@ -56,7 +56,7 @@
                 <div>
                     <label> Hours </label>
                     <input
-                        value={flipped ? mount :  Math.round(amount/60)}
+                        value={flipped ? amount :  Math.round(amount/60)}
                         disabled={!flipped}
 
                     ></input>
