@@ -42,7 +42,7 @@
 
         return (
             <div>
-                <h1> convertTest</h1>
+                <h1> convert CLONE Test</h1>
                 <div>
                     <label> Min </label>
                     <input
@@ -58,11 +58,11 @@
                     <input
                         value={flipped ? mount :  Math.round(amount/60)}
                         disabled={!flipped}
+
                     ></input>
-                
                 </div>
-                <button onclikc={reset}> resetBTN here </button>
-                <button onclick={onFlip}> flip </button>
+                <button onClick={reset}> reset BTN (returnToZero) </button>
+                <button onClick={onFlip}> flip </button>
 
             </div>    
 
