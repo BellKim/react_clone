@@ -18,10 +18,8 @@
 <script type="text/babel">
     const root = document.getElementById("root"); 
 
-    
-    
-    function App(){        
-    
+    function MinutesToHours(){
+
         const [amount, setAmount] = React.useState(0);
         const [inverted, setInverted] = React.useState(false);
         
@@ -44,7 +42,7 @@
 
             <div>
                 <div>
-                    <h1 className="h1"> convert Test </h1>
+                    <h1 className="h1"> MinutesToHours Component</h1>
 
                     <label htmlFor="monute"> Minutes</label>
                     <input 
@@ -75,17 +73,39 @@
         );
     };
 
+    function KmToMiles(){
+
+        return <h3> km to miles </h3>
+
+    }
+
+    
+    function App(){        
+
+        const [index, setIndex] = React.useState("xx");
+        const onSelect = (evnet) => {
+            // console.log(event);
+            // console.log(event.target.value);
+            setIndex(event.target.value);
+        }
+        return (
+            <div>
+                <h1 className="h1"> convert Test </h1>
+                    <select value={index} onChange={onSelect}>
+                        <option value="xx"> select Your Option units </option>
+                        <option value="0">min and hours</option>
+                        <option value="1"> km to mile</option>
+                    </select>
+                    <hr/>
+                    {index ==="xx" ? "plese Select units" : null}
+                    {index ==="0" ? <MinutesToHours /> : null}
+                    {index ==="1" ? <KmToMiles /> : null}
+            </div>
+        );
+    };
+
     ReactDOM.render(<App />, root);
 
-    /*
-        const num = [1, 2, 3];
-        const [a,b,c] = x;
-        a : 1
-        b : 2
-        c : 3
 
-
-
-    */
 </script>
 </html>     
