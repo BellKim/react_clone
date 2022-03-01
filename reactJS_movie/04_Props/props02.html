@@ -18,35 +18,55 @@
 <script type="text/babel">
     const root = document.getElementById("root"); 
 
-    function Btn({bbanana, big}){
+    function Btn({text, onClick}){
 
-        return <button style={{
-            backgroundColor :"tomato",
-            color:"white",
-            padding:"10px, 20px",
-            borderRadius: 10,
-            fontSize: big ? 40 : 16,
-        }}> {bbanana} </button>
+        console.log(text, "was rendered");
+        
+        return <button 
+            onClick={onClick}
+            style={{
+                backgroundColor :"tomato",
+                color:"white",
+                padding:"10px, 20px",
+                borderRadius: 10,
+                fontSize: 20,
+        }}> {text} </button>
     }
 
-    
+    const MemorizedBtn = React.memo(Btn)
     function App(){        
+        const [value, setValue] = React.useState("save Change");
+        const changeValue = () => setValue("Revert Change"); 
 
         return (
             <div>
-                
-                <Btn bbanana="save Change1" big={true} />
-                <Btn bbanana="continue2" big={false}/>
-                
-                
-                
-                
+                <h2> memo ()미사용 </h2>
+                <Btn text={value} onClick={changeValue}/>
+                <Btn text="continue2" />
             </div>
-        );
+        );       
+        
+        // return (
+        //     <div> 
+        //         <h2> memo ()사용</h2>
+        //          <MemorizedBtn text={value} onClick={changeValue}/>
+        //          <MemorizedBtn text="continue2" />
+        //         </div>
+        // );      
+        
     };
 
     ReactDOM.render(<App />, root);
 
+    /*
+    1. 두가지 버튼이 있는 상태에서 첫번쨰 버튼이 눌렸을 경우에 첫번째 버튼의 텍스트만 바뀌어 보이게된다. 
+    2. 그런데 app() 내부에 있는 모든 경우 두개의 버튼중 하나라도 바뀌게 된다면 두 버튼 전체를 렌더링 하게된다. 
+    3. 지금 현재로서는 2개라서 별 차이가 없겠지만 하위 버튼이 100개 1000개 많아질경우 하나의 형태만 바뀌어도 1000개 전체를 다시 렌더링하게되는데
+        이런경우 과도한 서버의 부담으로 다가올수 있다. 
+    4. 그래서 바뀐 버튼만 렌더링 할 수 있도록 memo() 함수를 사용해서 바뀌게된 특정 버튼만 리렌더링 할수있도록 해준다. 
+        사용방법은 const MemorizedBtn = React.memo(Btn) 의 형태로 사용하며 memo() 괄호 안에 component명을 입력해주면 된다. 
+    5. 컴포넌트가 실행 될때마다 콘솔을 찍게 되는데 memo() 를 사용한경우 바뀌게 된 버튼만 렌더링 되는것을 볼 수 있다ㅏ. 
+    */
 
 </script>
 </html>     
