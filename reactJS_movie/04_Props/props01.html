@@ -18,13 +18,15 @@
 <script type="text/babel">
     const root = document.getElementById("root"); 
 
-    function Btn(props){
+    function Btn({bbanana, big}){
+
         return <button style={{
             backgroundColor :"tomato",
             color:"white",
             padding:"10px, 20px",
-            borderRadius: 10
-        }}> {props.bbanana} </button>
+            borderRadius: 10,
+            fontSize: big ? 40 : 16,
+        }}> {bbanana} </button>
     }
 
     
@@ -33,8 +35,8 @@
         return (
             <div>
                 
-                <Btn bbanana="save Change1" x={false}/>
-                <Btn bbanana="continue2" y={7}/>
+                <Btn bbanana="save Change1" big={true} />
+                <Btn bbanana="continue2" big={false}/>
                 
                 
                 
