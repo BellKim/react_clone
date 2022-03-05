@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="root"></div>
+</body>
+<script crossorigin src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+<!-- development version -->
+<script src="https://unpkg.com/prop-types@15.6/prop-types.js"></script>
+
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+<script type="text/babel">
+    const root = document.getElementById("root"); 
+
+    function Btn({text, fontSize = 30}){
+
+        // console.log(text, "was rendered");
+        console.log(fontSize, "font size rendered");
+        
+        return <button 
+            style={{
+                backgroundColor :"tomato",
+                color:"white",
+                padding:"10px, 20px",
+                borderRadius: 10,
+                fontSize,
+        }}> {text} </button>
+    }
+
+    Btn.propTypes={
+        text: PropTypes.string.isRequired, 
+        fontSize: PropTypes.number,
+    }
+
+    function App(){        
+        const [value, setValue] = React.useState("save Change");
+        const changeValue = () => setValue("Revert Change"); 
+
+        return (
+            <div>
+                <Btn text="Save changes" fontSize={10}/>
+                <Btn text="Continue"/>
+            </div>
+        );       
+        
+        
+    };
+
+    ReactDOM.render(<App />, root);
+
+</script>
+</html>     
