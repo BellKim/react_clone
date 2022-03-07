@@ -3,17 +3,40 @@ import {useState, useEffect} from "react";
 
 function Hello(){
 
-    function byFc(){
+/*    function byFc(){
         console.log("bye! :< ");
     }
-
     function hiFc(){
         console.log("create :> ");
         return byFc;
     }
+    useEffect(hiFc, [])
+    return <h1> hello!! </h1>;*/
 
-    useEffect(hiFc, []);
-    return <h1> hello!! </h1>
+
+
+        // //위와 아래 모두 같은 가능을 한다.
+        // //표현법1
+        // useEffect(() =>{
+        //     console.log("hi :> ");
+        //     <h1>hello123</h1>
+        //     return () => {
+        //         console.log("bye@ :< ");
+        //     };
+        // }, [])
+        // return <h1> hhhello </h1>;
+
+        // //표현법2
+        useEffect(function(){
+            console.log("hi :> ");
+            return function(){
+                console.log("bye!! :<");
+            }
+        }, [])
+        return <h2> hello 2</h2>;
+
+
+
 }
 
 function App() {
