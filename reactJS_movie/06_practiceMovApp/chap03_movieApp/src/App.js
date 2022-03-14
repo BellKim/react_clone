@@ -14,7 +14,7 @@ function App() {
                 <Route path="/hello">
                     <h1>hello</h1>
                 </Route>
-                <Route path="/movie" component={Detail}>
+                <Route path="/movie/:id" component={Detail}>
                     {/*<Detail />*/}
                 </Route>
                 <Route path="/">
