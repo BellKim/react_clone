@@ -17,7 +17,7 @@ function Detail() {
         console.log(json);
         console.log(movies);
         setMovies(json);
-        // setLoading(false);
+        setLoading(false);
         console.log(movies);
     };
 
@@ -33,8 +33,22 @@ function Detail() {
             <Link to="/">Link router ::::  </Link>
             <hr/>
 
-            <h1>{movies}</h1>
 
+            <div> {
+                loading ? (<h1>loading.... now... </h1>)
+                    :
+                    (
+                        <div>
+                            <h1>{movies.data.movie.title} ({movies.data.movie.id})</h1>
+                            <img src={movies.data.movie.medium_cover_image} alt={movies.data.movie.title}/>
+                            <h1>{movies.data.movie.title}</h1>
+                            <h1>{movies.data.movie.summary}</h1>
+                            <h1>{movies.data.movie.genres}</h1>
+
+
+                        </div>
+                    )
+            }</div>
 
 
         </>
